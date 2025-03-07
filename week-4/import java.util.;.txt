@@ -1,0 +1,62 @@
+import java.util.*;
+public class Bank {
+    //Week 4 OOP Lab b part
+    private String name;
+    private String ac_no;
+    private double amt;
+    Scanner scan= new Scanner(System.in);
+    public Bank(String n, String ac,double am){
+        this.name=n;
+        this.ac_no=ac;
+        this.amt=am;
+        System.out.println("Welcome "+name+"-"+ac_no);
+        System.out.println("Select W for Withdrwal and D for Deposit");
+        char ch= scan.next().charAt(0);
+        switch(ch){
+            case 'W':
+            Withdraw();
+            break;
+            case 'D':
+            Deposit();
+            break;
+            default:
+            System.out.println("Please Enter the Proper Option.");
+        }
+    }
+    public void Withdraw(){
+        System.out.println("Welcome "+name+"-"+ac_no);
+        System.out.println("Enter Amount to Withdraw :");
+        double val=scan.nextDouble();
+        if(val>0&&val<=amt){
+            System.out.println("₹"+val+" has been withdrwan.");
+            this.amt-=val;
+            System.out.println("Balance : ₹"+this.amt);
+        }
+        else{
+            System.out.println("Error-Amount to withdraw is erronous.");
+        }
+        }
+    public void Deposit(){
+        System.out.println("Welcome "+name+"-"+ac_no);
+        System.out.println("Enter Amount to Deposit :");
+        double val=scan.nextDouble();
+        if(val>0){
+            this.amt+=val;
+            System.out.println("₹"+val+" has been deposited.");
+            System.out.println("Balance : ₹"+this.amt);
+        }
+        else{
+            System.out.println("Error-Amount to deposit is negative. ");
+        }
+            }
+        
+    public static void main(String[] args) {
+        Bank cust1= new Bank("Vallipriya","ACC23106",1023005.34);
+        Bank cust2= new Bank("Ravalika","ACC23109",2003467.48);
+        Bank cust3= new Bank("Akshaya","ACC23149",123478.65);
+
+
+        }
+
+    
+}
